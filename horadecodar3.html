@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hora de Codar 3</title>
+  </head>
+  <body>
+    <script>
+      //1 - Escreva um algoritmo para ler 2 valores informados pelo usuário e se o segundo valor informado for igual ou menor que ZERO, deve ser lido um novo valor. Ou seja, para o segundo valor não pode ser aceito o valor zero, nem um valor negativo.  O seu programa deve imprimir o resultado da divisão do primeiro valor lido pelo segundo valor.
+
+      function exercice1() {
+        alert(
+          "Insira a seguir dois valores para um divisão. O segundo número não pode ser negativo ou igual a 0."
+        );
+        let num1 = parseFloat(prompt("Digite o primeiro número:"));
+        let num2 = parseFloat(prompt("Digite o segundo número:"));
+
+        let result = num1 / num2;
+        if (num2 <= 0) {
+          alert(
+            "O segundo número nao pode ser negativo ou igual a 0. Tente novamente."
+          );
+        } else
+          alert(`O resultado da divisão de ${num1} por ${num2} é: ${result}.`);
+      }
+
+      //2 - Crie uma bomba relógio (usando somente código - para deixar claro!) cuja contagem regressiva vá de 30 a 0. Utilize "document.write" para escrever em tela e no final da repetição escreva "EXPLOSÃO".
+
+      function exercice2() {
+        for (let countdown = 30; countdown >= 0; countdown--) {
+          document.write(`<h4> CONTAGEM: ${countdown}<br></h4>`);
+
+          if (countdown == 0) {
+            document.write("<h2>EXPLOSÃO!!</h2>");
+          }
+        }
+      }
+
+      //3 - Escreva um algoritmo para imprimir os números de 1 (inclusive) a 10 (inclusive) em ordem decrescente.
+      // Exemplo: 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+
+      function exercice3() {
+        for (let n = 10; n >= 0; n--) {
+          document.write(`<h4>${n}<br></h4>`);
+        }
+      }
+
+      //4 - Faça um algoritmo que calcule e escreva a média aritmética dos números inteiros entre 15 (inclusive) e 100 (inclusive).
+
+      function exercice4() {
+        let wNumbers = [];
+        let sum = 0;
+
+        for (let wNumbersLoop = 15; wNumbersLoop <= 100; wNumbersLoop++) {
+          wNumbers.push(wNumbersLoop);
+          sum += wNumbersLoop;
+        }
+
+        let average = sum / wNumbers.length;
+
+        document.write(
+          `A média aritmética dos números inteiros entre 15 (inclusive) e 100 (inclusive) é: ${average}`
+        );
+      }
+
+      //5 - Faça um algoritmo que calcule e escreva a média aritmética dos dois números inteiros informados pelo usuário e todos os números inteiros entre eles. Considere que o primeiro sempre será menor que o segundo.
+
+      function exercice5() {
+        let wNumbers = [];
+        let sum = 0;
+        alert(
+          "Digite dois números a seguir. O primeiro número deve ser menor que o segundo."
+        );
+        let sNum = parseInt(prompt("Digite o primeiro número:"));
+        let bNum = parseInt(
+          prompt("Digite o segundo número. Este deve ser MAIOR que o primeiro.")
+        );
+
+        for (let wNumbersLoop = sNum; wNumbersLoop <= bNum; wNumbersLoop++) {
+          wNumbers.push(wNumbersLoop);
+          sum += wNumbersLoop;
+        }
+
+        let average = sum / wNumbers.length;
+
+        document.write(
+          `<h1>A média aritmética dos números inteiros entre ${sNum}(inclusive) e ${bNum}(inclusive) é: ${average}</h1>`
+        );
+      }
+
+      // 6 - Escreva um programa para ler 2 notas de um aluno, calcular e imprimir a média final. Considere que a nota de aprovação é 9,5. Logo após escrever a mensagem "Calcular a média de outro aluno Sim/Não?" e solicitar um resposta. Se a resposta for "S", o programa deve ser executado novamente, caso contrário deve ser encerrado exibindo a quantidade de alunos aprovados.
+
+      function exercice6() {
+        function calc() {
+          var n1 = parseFloat(prompt("Insira sua primeira nota:"));
+          var n2 = parseFloat(prompt("Insira sua segunda nota:"));
+          var average = (n1 + n2) / 2;
+          average >= 9.5
+            ? alert(`Parabéns, você foi aprovado! Sua média é: ${average}`)
+            : alert(
+                `Infelizmente você não foi aprovado, sua média é ${average}`
+              );
+
+          var reCalc = prompt("Calcular a média de outro aluno S/N");
+          switch (reCalc) {
+            case "S":
+              calc();
+              break;
+            default:
+              break;
+          }
+        }
+
+        alert(
+          "Olá, a seguir vamos calcular a média entre duas notas de um aluno. A média para aprovação é de 9,5.:"
+        );
+        calc();
+      }
+
+      // 7 - Escreva um algoritmo para ler as notas de avaliações de um aluno, calcule e imprima a média (simples) desse aluno. Só devem ser aceitos valores válidos durante a leitura (0 a 10) para cada nota. São 6 notas ao total. Caso o valor informado para qualquer uma das notas esteja fora do limite estabelecido, deve ser solicitado um novo valor ao usuário.
+
+      function exercice7() {
+        alert(
+          `Olá, vamos calcular a seguir a media entre 6 notas. Insira somente números entre 0 e 10!`
+        );
+
+        let grades = [];
+        let sum = 0;
+
+        while (grades.length < 6) {
+          let grade = parseFloat(
+            prompt(`Digite a ${grades.length + 1}ª nota:`)
+          );
+
+          if (grade < 0 || grade > 10 || isNaN(grade)) {
+            alert("Digite somente números entre 0 e 10.");
+          } else {
+            sum += grade;
+            grades.push(grade);
+          }
+        }
+
+        let averageGrade = sum / grades.length;
+        alert(`A media entre as 6 notas do aluo é: ${averageGrade}`);
+      }
+
+      // 8 - Ler um valor N e imprimir todos os valores inteiros entre 1 (inclusive) e N (inclusive). Considere que o N será sempre maior que ZERO. N  é um valor informado pelo usuário.
+
+      function exercice8() {
+        let N = parseFloat(
+          prompt(
+            "Informe abaixo um número maior que 0 e o progama irá te mostrar todos os valores inteiros entre 1 e seu número."
+          )
+        );
+        document.write(
+          `<strong>A sequencia de números inteiros entre 1 e ${N} é: </strong>`
+        );
+
+        if (Number.isInteger(N) && N > 0) {
+          for (integer = 1; integer <= N; integer++) {
+            document.write(`\n ${integer}`);
+          }
+        } else {
+          alert("Digite somente um número inteiro maior que 0!");
+        }
+      }
+
+      // 9 - Escreva um algoritmo para imprimir os 10 primeiros números inteiros maiores que 100.
+
+      function exercice9() {
+        num = 100;
+        document.write(
+          `Os 10 primeiros números inteiros maiores que 100 são: `
+        );
+        while (num < 110) {
+          num++;
+          document.write(`\n${num}`);
+        }
+      }
+
+      // 10 - Escreva um programa para imprimir todas as tabuadas de 1 a N. N será informado pelo usuário.
+
+      function exercice10() {
+        var request = parseInt(
+          prompt(
+            "Insira um número para ver toda a tabuada de multiplicação até ele:"
+          )
+        );
+
+        for (var n = 1; n <= request; n++) {
+          document.write(`<h2>A TABUADA DE ${n} É:</h2>`);
+          for (var multiplication = 0; multiplication <= 10; multiplication++) {
+            var result = n * multiplication;
+            document.write(`<p>${n} * ${multiplication} é = ${result}</p>`);
+          }
+        }
+      }
+
+      //11 - Escreva um programa em que o usuário informe 10 valores e escreva quantos desses valores lidos estão entre os números 24 e 42 (incluindo os valores 24 e 42) e quantos deles estão fora deste intervalo.
+
+      function exercice11() {
+        var inNum = [];
+        var outNum = [];
+
+        alert("Informe 10 números.");
+
+        for (var num = 1; num <= 10; num++) {
+          var userNumber = prompt(`Digite o ${num}° número`);
+          if (userNumber >= 24 && userNumber <= 42) {
+            inNum.push(" " + userNumber);
+          } else {
+            outNum.push(" " + userNumber);
+          }
+        }
+        alert(
+          `Números entre 24 e 42: ${inNum}. E os números fora deste conjunto são: ${outNum}`
+        );
+      }
+    </script>
+  </body>
+</html>
